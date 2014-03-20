@@ -1,0 +1,57 @@
+---
+- name: add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  tags: [ configuration, packages, service, dashing ]
+
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
+  tags: [ packages, dashing ]
+
+- include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+  tags: [ packages, dashing ]
+
+- name: install required gems
+  gem: name={{ item }} state={{ dashing_gem_state }} user_install=no
+  with_items:
+    - dashing
+    - bundler
+  environment: gem_env
+  tags: [ packages, dashing ]
+ 
+- name: install init script
+  template: src=etc/init.d/dashing dest=/etc/init.d/{{ dashing_service_name }} mode=0755 owner=root group=root
+  notify:
+    - restart dashing
+  tags: [ packages, dashing ]
+
+- name: create root path for the dashbaord
+  file: path={{ dashing_path }} state=directory owner=root group=root mode=0755
+  tags: [ packages, dashing ]
+
+- name: create a new dashing dashboard
+  command: dashing new {{ dashing_name }} chdir={{ dashing_path }} creates={{ dashing_path }}/{{ dashing_name }}
+  environment: gem_env
+  tags: [ dashing ]
+
+- name: check if bundle already installed
+  command: bundle check chdir={{ dashing_path }}/{{ dashing_name }}
+  register: bundle_state
+  ignore_errors: yes
+  changed_when: "bundle_state.rc != 0"
+  environment: gem_env
+  tags: [ packages, dashing ]
+
+- name: install bundles if not installed
+  command: bundle install chdir={{ dashing_path }}/{{ dashing_name }}
+  when: "bundle_state.rc != 0"
+  notify:
+    - restart dashing
+  environment: gem_env
+  tags: [ packages, dashing ]
+
+- name: enable dashing service
+  service: name={{ dashing_service_name }} enabled={{ dashing_service_enable }}
+  notify:
+    - restart dashing
+  tags: [ services, dashing ]

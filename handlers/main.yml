@@ -1,0 +1,3 @@
+---
+- name: restart dashing
+  service: name={{ dashing_service_name }} state=restarted

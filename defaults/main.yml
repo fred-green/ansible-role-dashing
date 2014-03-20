@@ -1,0 +1,9 @@
+---
+dashing_pkg_state: installed
+dashing_gem_state: present
+dashing_service_enable: yes
+
+dashing_path: /var/www
+dashing_name: dashboard
+dashing_port: 8080
+dashing_address: 0.0.0.0

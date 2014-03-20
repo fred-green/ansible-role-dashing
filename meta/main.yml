@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: René Moser
+  description: Installs und manages Shopify Dashing
+  company: Moser Systems
+  license: BSD
+  min_ansible_version: 1.4
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  - name: Ubuntu
+    versions:
+    - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
+  - name: Debian
+    versions:
+    - wheezy
+  categories:
+  - monitoring
+  - web
+dependencies: []
