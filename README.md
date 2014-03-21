@@ -36,12 +36,12 @@ Role Variables
   - Default: `yes`
 
 * `dashing_path`:
-  - Description: Root path for installing dashbaord underneath.
+  - Description: Root path for installing dashboard underneath.
   - Default: `/var/www`
 
 * `dashing_name`:
-  - Description: The name of the dashbaord directory. Used below `dashing_path`.
-  - Default: `dashbaord`
+  - Description: The name of the dashboard directory. Used below `dashing_path`.
+  - Default: `dashboard`
 
 * `dashing_address`:
   - Description: Bind to host address
