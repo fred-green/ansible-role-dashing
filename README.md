@@ -3,11 +3,11 @@
 Ansible role for installing Shopify's Dashing dashboard
 =======================================================
 
-**ALPHA** This role installs Shopify's' [Dashing](http://shopify.github.io/dashing). It uses NodeJS and installs the ruby environment. After running the playbook, you will find and init script `dashing` to handle dashing as daemon. 
+**ALPHA** This role installs Shopify's' [Dashing](http://shopify.github.io/dashing). It uses NodeJS and installs the ruby environment.
 
 If no dashboard is installed under the `dashing_path`/`dashing_name`, this role will create a new one. If you have an existing dashboard, transfer the files under this path `dashing_path`/`dashing_name`.
 
-The role is installing a init script located in `/etc/init.d/dashing` for handling the daemon.
+The role is installing an init script located in `/etc/init.d/dashing` for handling the daemon.
 
 For testing and development purposes a `Vagrantfile` is available, it uses the same `role.yml` as in Travis CI. So testing this role is just a `vagrant up` away. Then point your browser to http://localhost:8080.
 
