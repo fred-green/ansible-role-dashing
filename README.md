@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/resmo/ansible-role-dashing.svg?branch=master)](https://travis-ci.org/resmo/ansible-role-dashing)
 
-Ansible role for installing Shopify's Dashing dashbaord
+Ansible role for installing Shopify's Dashing dashboard
 =======================================================
 
 **ALPHA** This role installs Shopify's' [Dashing](http://shopify.github.io/dashing). It uses NodeJS and installs the ruby environment. After running the playbook, you will find and init script `dashing` to handle dashing as daemon. 
