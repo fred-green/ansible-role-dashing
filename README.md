@@ -9,7 +9,7 @@ If no dashboard is installed under the `dashing_path`/`dashing_name`, this role 
 
 The role is installing a init script located in `/etc/init.d/dashing` for handling the daemon.
 
-For testing and development purposes a `Vagrantfile` is available, it uses the same `role.yml` as in Travis CI. So testing this role is just a `vagrant up` away.
+For testing and development purposes a `Vagrantfile` is available, it uses the same `role.yml` as in Travis CI. So testing this role is just a `vagrant up` away. Then point your browser to http://localhost:8080.
 
 Requirements
 ------------
