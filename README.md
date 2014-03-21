@@ -61,12 +61,12 @@ Example Playbook
 
     - hosts: dashboard
       roles:
-         - { role: resmo.ansible-role-dashing }
+         - { role: resmo.dashing }
 
 
     - hosts: dashboard
       roles:
-         - { role: resmo.ansible-role-dashing, dashing_port: 80, dashing_path: /srv }
+         - { role: resmo.dashing, dashing_port: 80, dashing_path: /srv }
 
 License
 -------
