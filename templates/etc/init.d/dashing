@@ -35,7 +35,7 @@ ADDRESS={{ dashing_address }}
 
 PIDFILE="/var/run/$NAME.pid"
 LOGFILE=/var/log/dashing
-RUNUSER={{ dashhing_user }}
+RUNUSER={{ dashing_user }}
 RUNGROUP={{ dashing_group }}
 
 # see thin --help
