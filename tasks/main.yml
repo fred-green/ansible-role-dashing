@@ -31,7 +31,7 @@
 
 - name: create a new dashing dashboard
   command: dashing new {{ dashing_name }} chdir={{ dashing_path }} creates={{ dashing_path }}/{{ dashing_name }}
-  environment: gem_env
+  environment: '{{gem_env}}'
   tags: [ dashing ]
 
 - name: check if bundle already installed
@@ -39,7 +39,7 @@
   register: bundle_state
   ignore_errors: yes
   changed_when: "bundle_state.rc != 0"
-  environment: gem_env
+  environment: '{{gem_env}}'
   tags: [ packages, dashing ]
 
 - name: install bundles if not installed
@@ -47,7 +47,7 @@
   when: "bundle_state.rc != 0"
   notify:
     - restart dashing
-  environment: gem_env
+  environment: '{{gem_env}}'
   tags: [ packages, dashing ]
 
 - name: enable dashing service
